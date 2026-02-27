@@ -8,6 +8,9 @@ GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
 
+#кадров в секунду у пользователя
+FPS=60
+
 # Направления движения:
 UP = (0, -1)
 DOWN = (0, 1)
@@ -40,7 +43,51 @@ clock = pygame.time.Clock()
 
 
 # Тут опишите все классы игры.
-...
+class GameObject:
+    def __init__(self, position=(0, 0), body_color=(255, 255, 255)):
+        self.position = position
+        self.body_color = body_color
+
+    def draw(self):
+        raise NotImplementedError("draw() должен быть в дочернем классе")
+    
+class Apple(GameObject):
+    def __init__(self):
+        super()._init_(body_color=APPLE_COLOR)
+        #добавляем рандомную позицую яблоку
+        self.randomize_position[()]
+
+    def draw(self):
+        rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
+        pygame.draw.rect(screen, self.body_color, rect)
+        pygame.draw.rect(screen, BORDER_COLOR, rect, 1)   
+         
+    def randomize_position(self, occupied_positions):
+        while True:
+            x = randint(0, GRID_WIDTH - 1) * GRID_SIZE
+            y = randint(0, GRID_HEIGHT - 1) * GRID_SIZE
+            pos = (x, y)
+
+            if pos not in occupied_positions:
+                self.position = pos
+                break    
+
+
+class Snake(GameObject):
+
+    def __init__(self, position=(0, 0), body_color=(124, 252, 0)):
+        super().__init__(position, body_color)
+
+    
+
+
+    def draw(self):
+      for position in self.positions[:-1]:
+          rect = (pygame.Rect(position, (GRID_SIZE, GRID_SIZE)))
+          pygame.draw.rect(screen, self.body_color, rect)
+          pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
+
+
 
 
 def main():
