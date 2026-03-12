@@ -1,7 +1,6 @@
 """Игра «Изгиб Питона» — классическая змейка на Pygame."""
 
 from __future__ import annotations
-
 from random import choice
 from typing import ClassVar, Dict, Optional, Tuple
 
@@ -27,7 +26,7 @@ RIGHT = (1, 0)
 START_LENGTH = 1
 START_DIRECTION = RIGHT
 FPS = 20
-WINDOW_TITLE = "Изгиб Питона"
+WINDOW_TITLE = 'Изгиб Питона'
 CENTER_POSITION = (GRID_WIDTH // 2, GRID_HEIGHT // 2)
 
 ALL_CELLS = {
@@ -270,9 +269,11 @@ def update_caption(snake: Snake) -> None:
     Args:
         snake: Экземпляр змейки.
     """
-    pygame.display.set_caption(
-        f"{WINDOW_TITLE} | Длина: {snake.length} | Рекорд: {snake.record_length}"
+    title = (
+        f'{WINDOW_TITLE} | Длина: {snake.length} | '
+        f'Рекорд: {snake.record_length}'
     )
+    pygame.display.set_caption(title)
 
 
 def handle_keys(snake: Snake) -> None:
@@ -328,12 +329,16 @@ def main() -> None:
 
         if snake.get_head_position() == apple.position:
             snake.grow()
-            apple.randomize_position(occupied_positions=snake.get_positions_set())
+            apple.randomize_position(
+                occupied_positions=snake.get_positions_set()
+            )
             update_caption(snake)
 
         if snake.has_self_collision():
             snake.reset()
-            apple.randomize_position(occupied_positions=snake.get_positions_set())
+            apple.randomize_position(
+                occupied_positions=snake.get_positions_set()
+            )
             update_caption(snake)
 
         draw(screen, snake, apple)
@@ -341,5 +346,5 @@ def main() -> None:
         clock.tick(FPS)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
