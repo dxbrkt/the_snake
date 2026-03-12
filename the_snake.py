@@ -4,7 +4,9 @@ from __future__ import annotations
 
 from random import choice
 from typing import Optional, Tuple
+
 import pygame
+
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 GRID_SIZE = 20
