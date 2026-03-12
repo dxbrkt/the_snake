@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from random import choice
 from typing import ClassVar, Dict, Optional, Tuple
-import pygame
 
+import pygame
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
