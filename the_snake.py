@@ -1,6 +1,7 @@
 """Игра «Изгиб Питона» — классическая змейка на Pygame."""
 
 from __future__ import annotations
+
 from random import choice
 from typing import ClassVar, Dict, Optional, Tuple
 
@@ -348,3 +349,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+    
